@@ -1,0 +1,22 @@
+/* Entrada do CSS do site público: cada seção tem o seu arquivo */
+@import url('base.css?v=hotbar2');
+@import url('componentes/selos.css?v=hotbar2');
+@import url('componentes/foto.css?v=hotbar2');
+@import url('componentes/formularios.css?v=hotbar2');
+@import url('componentes/conta.css?v=hotbar2');
+@import url('site/splash.css?v=hotbar2');
+@import url('site/cabecalho.css?v=hotbar2');
+@import url('site/secoes.css?v=hotbar2');
+@import url('site/hero.css?v=hotbar2');
+@import url('site/modalidades.css?v=hotbar2');
+@import url('site/numeros.css?v=hotbar2');
+@import url('site/diferenciais.css?v=hotbar2');
+@import url('site/depoimentos.css?v=hotbar2');
+@import url('site/planos.css?v=hotbar2');
+@import url('site/experimental.css?v=hotbar2');
+@import url('site/faq.css?v=hotbar2');
+@import url('site/contato.css?v=hotbar2');
+@import url('site/rodape.css?v=hotbar2');
+@import url('site/flutuantes.css?v=hotbar2');
+@import url('site/interna.css?v=hotbar2');
+@import url('site/assinatura.css?v=hotbar2');

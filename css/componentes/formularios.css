@@ -1,0 +1,34 @@
+/* Campos de formulário escuros, avisos e mensagens de retorno */
+.campo { display: block; margin-bottom: var(--esp-4); font-weight: 600; }
+.campo input, .campo select, .campo textarea {
+  width: 100%; min-height: 48px; margin-top: var(--esp-2); padding: .8rem 1rem;
+  border: 1px solid var(--cor-borda); border-radius: var(--raio-pequeno);
+  background: var(--cor-fundo); color: var(--cor-texto); font: inherit; color-scheme: dark;
+  transition: border-color var(--rapido), box-shadow var(--rapido);
+}
+.campo input::placeholder, .campo textarea::placeholder { color: #8d8d95; }
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: none; border-color: var(--cor-vermelho-vivo); box-shadow: 0 0 0 3px rgba(255, 59, 68, .28);
+}
+.campos-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--esp-4); }
+
+.aviso { margin: 0; padding: var(--esp-3) var(--esp-4); border-left: 4px solid var(--cor-vermelho-vivo); border-radius: var(--raio-pequeno); background: var(--cor-cartao-alto); color: var(--cor-texto-suave); }
+
+.retorno { display: none; margin: 0 0 var(--esp-4); padding: var(--esp-3) var(--esp-4); border: 1px solid transparent; border-radius: var(--raio-pequeno); }
+.retorno--ok { display: block; border-color: rgba(74, 222, 128, .4); background: rgba(74, 222, 128, .12); color: #86efac; }
+.retorno--erro { display: block; border-color: rgba(255, 107, 107, .4); background: rgba(255, 107, 107, .12); color: #ffb4b4; }
+.retorno--info { display: block; background: var(--cor-cartao-alto); color: var(--cor-texto); }
+
+/* Opção marcável em forma de botão (modalidades, horários, planos) */
+.opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-3); }
+.opcao input { position: absolute; opacity: 0; width: 1px; }
+.opcao__corpo {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--esp-1); min-height: 48px; padding: .6rem 1.1rem;
+  border: 1px solid var(--cor-borda); border-radius: var(--raio-pequeno); background: var(--cor-fundo); cursor: pointer;
+  transition: border-color var(--rapido), background var(--rapido);
+}
+.opcao:hover .opcao__corpo { border-color: rgba(255, 59, 68, .6); }
+.opcao input:checked + .opcao__corpo { border-color: var(--cor-vermelho); background: var(--cor-vermelho); color: #fff; }
+.opcao input:focus-visible + .opcao__corpo { outline: 3px solid var(--cor-vermelho-vivo); outline-offset: 2px; }
+.opcao input:disabled + .opcao__corpo { opacity: .5; cursor: not-allowed; }
+.opcao small { color: inherit; opacity: .8; }

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equipe | Academia Marte</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/painel.css?v=hotbar2">
+  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+</head>
+<body class="painel">
+  <a class="voltar" id="voltar" href="index.html" aria-label="Voltar ao site"><svg aria-hidden="true"><use href="#i-voltar"/></svg></a>
+
+  <div class="entrada" id="entrada">
+    <section class="entrada__marca">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <h1>Academia Marte</h1>
+      <p>Painel da equipe: alunos, planos, aulas experimentais e presença em um só lugar.</p>
+    </section>
+    <div class="entrada__area">
+      <form class="login" id="login">
+        <h2>Entrar</h2>
+        <label class="campo">E-mail<input id="email" type="email" required autocomplete="email"></label>
+        <label class="campo">Senha<input id="senha" type="password" required autocomplete="current-password"></label>
+        <button class="btn btn--bloco">Entrar no painel</button>
+        <p class="login__erro" id="login-erro" role="alert"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="app" id="app">
+    <nav class="menu-lateral" aria-label="Painel">
+      <a class="menu-lateral__marca" href="index.html" aria-label="Voltar à página inicial"><svg aria-hidden="true"><use href="#logo"/></svg>Academia Marte</a>
+      <button data-tela="painel"><svg aria-hidden="true"><use href="#i-dashboard"/></svg>Painel</button>
+      <button data-tela="experimentais"><svg aria-hidden="true"><use href="#i-calendar"/></svg>Experimentais</button>
+      <button data-tela="alunos"><svg aria-hidden="true"><use href="#i-users"/></svg>Alunos</button>
+      <button data-tela="estatisticas"><svg aria-hidden="true"><use href="#i-chart"/></svg>Estatísticas</button>
+      <button id="sair"><svg aria-hidden="true"><use href="#i-logout"/></svg>Sair</button>
+    </nav>
+    <div class="principal">
+      <header class="barra-topo">
+        <a class="barra-topo__marca" href="index.html" aria-label="Voltar à página inicial"><svg aria-hidden="true"><use href="#logo"/></svg>Academia Marte</a>
+        <span><strong>Painel da equipe</strong></span>
+        <span id="data-hoje"></span>
+      </header>
+      <main class="conteudo" id="conteudo"></main>
+    </div>
+  </div>
+  <div id="aviso" role="status"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/admin/ui.js"></script>
+  <script src="js/admin/dashboard.js"></script>
+  <script src="js/admin/trials.js"></script>
+  <script src="js/admin/students.js"></script>
+  <script src="js/admin/graficos.js"></script>
+  <script src="js/admin/stats.js"></script>
+  <script src="js/admin/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* Botões: vermelho cheio (padrão), contornado (--ghost) e tamanhos */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--esp-2);
+  min-height: 48px; padding: .8rem 1.75rem;
+  border: 2px solid var(--cor-vermelho); border-radius: var(--raio-pilula);
+  background: var(--cor-vermelho); color: var(--white);
+  font: 600 var(--texto-base)/1 var(--fonte-texto); text-decoration: none; cursor: pointer;
+  transition: background var(--rapido), border-color var(--rapido), box-shadow var(--rapido), transform .15s;
+}
+.btn:hover { border-color: var(--red-dark); background: var(--red-dark); box-shadow: var(--brilho); }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+.btn--ghost { border-color: rgba(255, 255, 255, .55); background: transparent; }
+.btn--ghost:hover { border-color: var(--white); background: rgba(255, 255, 255, .1); box-shadow: none; }
+.btn--grande { min-height: 56px; padding-inline: 2.25rem; font-size: 1.05rem; }
+.btn--bloco { width: 100%; }
+.btn--pequeno { min-height: 40px; padding: .5rem 1.1rem; font-size: .9rem; }

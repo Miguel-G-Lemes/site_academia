@@ -1,0 +1,13 @@
+/* Estrutura comum das seções: respiro, cabeçalho da seção, linha vermelha sutil e revelar ao rolar */
+.secao { position: relative; padding: var(--esp-9) 0; }
+.secao::before { content: ''; position: absolute; top: 0; left: 50%; width: min(var(--largura), calc(100% - 2 * var(--esp-5))); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(255, 59, 68, .55), transparent); }
+.secao--grafite { background: linear-gradient(180deg, var(--cor-cartao), #09090a); }
+.secao__cabeca { max-width: 62ch; margin-bottom: var(--esp-7); }
+.secao__cabeca--centro { margin-inline: auto; text-align: center; }
+.secao h2 { font-size: var(--titulo-secao); }
+.secao__intro { margin: var(--esp-3) 0 0; color: var(--cor-texto-suave); font-size: var(--texto-grande); }
+
+/* Revelar ao rolar (só quando o JavaScript está ativo) */
+.js [data-revelar] { opacity: 0; transform: translateY(18px); transition: opacity var(--suave) var(--curva), transform var(--suave) var(--curva); }
+.js [data-revelar].revelado { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js [data-revelar] { opacity: 1; transform: none; } }

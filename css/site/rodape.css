@@ -1,0 +1,18 @@
+/* Rodapé: astronauta, frase, redes em ícones e colunas de links */
+.rodape { position: relative; padding: var(--esp-8) 0 var(--esp-6); border-top: 1px solid var(--cor-borda); background: linear-gradient(180deg, #000, #0d0507); color: var(--cor-texto-suave); }
+.rodape__grade { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--esp-7); }
+.rodape__marca { display: flex; flex-direction: column; align-items: flex-start; gap: var(--esp-4); }
+.rodape__astronauta { width: 150px; height: 150px; }
+.rodape__frase { margin: 0; color: var(--cor-texto); font: 400 2.3rem/1 var(--fonte-titulo); max-width: 13ch; }
+.rodape h3 { margin-bottom: var(--esp-4); color: var(--cor-texto); font-size: 1.5rem; }
+.rodape ul { display: grid; gap: var(--esp-3); margin: 0; padding: 0; list-style: none; }
+.rodape a { text-decoration: none; }
+.rodape a:hover { color: var(--red-vivo); }
+.rodape__redes { display: flex; gap: var(--esp-3); }
+.rodape__redes a { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--cor-borda); border-radius: 50%; color: var(--white); transition: background var(--rapido), border-color var(--rapido); }
+.rodape__redes a:hover { border-color: var(--cor-vermelho); background: var(--cor-vermelho); color: var(--white); }
+.rodape__redes svg { width: 22px; height: 22px; }
+.rodape__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--esp-3); margin-top: var(--esp-7); padding-top: var(--esp-5); border-top: 1px solid var(--cor-borda); font-size: var(--texto-pequeno); }
+.rodape__base nav { display: flex; gap: var(--esp-5); }
+@media (max-width: 960px) { .rodape__grade { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .rodape__grade { grid-template-columns: 1fr; } }

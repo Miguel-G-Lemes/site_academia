@@ -1,0 +1,6 @@
+/* Faixa de números animados */
+.numeros { padding: var(--esp-7) 0; border-block: 1px solid var(--cor-borda); background: var(--cor-cartao); }
+.numeros__lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--esp-5); margin: 0; padding: 0; list-style: none; text-align: center; }
+.numero__valor { display: block; color: var(--cor-vermelho-vivo); font: 400 clamp(3.6rem, 8vw, 6rem)/1 var(--fonte-titulo); letter-spacing: .02em; }
+.numero__rotulo { color: var(--cor-texto-suave); }
+@media (max-width: 640px) { .numeros__lista { grid-template-columns: 1fr; } }

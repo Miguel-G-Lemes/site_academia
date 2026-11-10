@@ -1,0 +1,13 @@
+/* Selos (etiquetas pequenas): padrão, destaque, aviso, lotado e situação (ativo, vencido, próximo) */
+.selo {
+  display: inline-flex; align-items: center; padding: .2rem .75rem;
+  border: 1px solid rgba(255, 59, 68, .55); border-radius: var(--raio-pilula);
+  background: rgba(229, 32, 43, .14); color: var(--cor-vermelho-vivo);
+  font: 600 .8rem/1.4 var(--fonte-texto); font-style: normal;
+}
+.selo--destaque { border-color: var(--cor-vermelho); background: var(--cor-vermelho); color: #fff; }
+.selo--aviso { border-color: rgba(251, 191, 36, .5); background: rgba(251, 191, 36, .12); color: var(--cor-aviso); }
+.selo--lotado { border-color: var(--cor-borda); background: var(--cor-cartao-alto); color: var(--cor-texto-suave); }
+.selo.ativo, .selo--ok { border-color: rgba(74, 222, 128, .4); background: rgba(74, 222, 128, .12); color: var(--cor-ok); }
+.selo.venc { border-color: rgba(255, 107, 107, .4); background: rgba(255, 107, 107, .12); color: var(--cor-erro); }
+.selo.prox { border-color: rgba(251, 191, 36, .5); background: rgba(251, 191, 36, .12); color: var(--cor-aviso); }

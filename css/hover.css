@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Texto vermelho ao passar o cursor (vale para todo o projeto)
+   - A cor vem de --texto-hover: vermelho vivo (legível sobre fundo escuro).
+   - Controles com fundo próprio (botões, opções, selos, avisos, ícones) ficam de fora.
+   - Só vale em dispositivos com mouse (no celular não existe "passar o cursor").
+   Carregue este arquivo por último em cada página.
+   ========================================================================== */
+
+:root { --texto-hover: var(--cor-vermelho-vivo); }
+
+/* Texto comum */
+:where(h1, h2, h3, h4, p, li, dt, dd, label, legend, small, em, strong, span, td, th, figcaption, blockquote, summary, a) {
+  transition: color var(--rapido);
+}
+
+@media (hover: hover) {
+  :where(h1, h2, h3, h4, p, li, dt, dd, label, legend, small, em, strong, span, td, th, figcaption, blockquote, summary, a):not(
+    .btn, .btn *, .chip, .selo, .retorno,
+    .opcao *, .opcao-plano *, .conta__botao *,
+    .diferencial__icone, .diferencial__icone *, .sucesso__icone, .sucesso__icone *,
+    .passo__numero, .avatar, .rodape__redes a, .modal__fechar
+  ):hover {
+    color: var(--texto-hover);
+  }
+}

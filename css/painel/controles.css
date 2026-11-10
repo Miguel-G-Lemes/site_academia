@@ -1,0 +1,11 @@
+/* Controles do painel: campos de filtro e cadastro rápido (baixa especificidade, para não afetar as janelas) */
+:where(.painel) :is(select, input:not([type=checkbox]):not([type=radio])) {
+  min-height: 44px; padding: .55rem .9rem; border: 1px solid var(--cor-borda); border-radius: var(--raio-pequeno);
+  background: var(--cor-cartao-alto); color: var(--cor-texto); font: inherit; color-scheme: dark;
+  transition: border-color var(--rapido), box-shadow var(--rapido);
+}
+:where(.painel) :is(select, input):focus { outline: none; border-color: var(--cor-vermelho-vivo); box-shadow: 0 0 0 3px rgba(255, 59, 68, .28); }
+.barra { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-3); margin-bottom: var(--esp-5); }
+.barra .opcoes { gap: var(--esp-2); }
+.barra .opcao__corpo { min-height: 44px; padding: .5rem .9rem; }
+.chip { align-self: center; padding: .4rem 1rem; border-radius: var(--raio-pilula); background: var(--cor-vermelho); color: #fff; font-weight: 600; }

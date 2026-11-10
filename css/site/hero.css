@@ -1,0 +1,21 @@
+/* Hero: foto em tela cheia com degradê escuro, texto à esquerda */
+.hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(86svh, 800px); overflow: hidden; border-bottom: 1px solid var(--cor-borda); background: linear-gradient(135deg, #000, var(--cor-vermelho-escuro)); }
+.hero__fundo { position: absolute; inset: 0; z-index: -2; margin: 0; }
+.hero__fundo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 35%; filter: var(--filtro-foto); }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(0, 0, 0, .94) 0%, rgba(0, 0, 0, .7) 42%, rgba(0, 0, 0, .2) 100%), linear-gradient(0deg, #000 0%, transparent 38%); }
+.hero::after { content: ''; position: absolute; right: -12%; bottom: -35%; z-index: -1; width: 60vw; height: 60vw; background: radial-gradient(closest-side, rgba(229, 32, 43, .3), transparent); pointer-events: none; }
+
+.hero__texto { max-width: 660px; padding: var(--esp-9) 0 var(--esp-8); }
+.hero h1 { font-size: var(--titulo-pagina); animation: hero-subir .8s both; }
+.hero__intro { max-width: 46ch; margin: var(--esp-5) 0 var(--esp-6); color: var(--cor-texto-suave); font-size: var(--texto-grande); animation: hero-subir .8s .15s both; }
+.hero__acoes { display: flex; flex-wrap: wrap; gap: var(--esp-3); animation: hero-subir .8s .3s both; }
+.hero__confianca { display: grid; gap: var(--esp-3); margin: var(--esp-7) 0 0; padding: 0; list-style: none; color: var(--cor-texto-suave); animation: hero-subir .8s .45s both; }
+.hero__confianca li { display: flex; align-items: center; gap: var(--esp-3); }
+.hero__confianca svg { flex: none; width: 20px; height: 20px; color: var(--cor-vermelho-vivo); }
+@keyframes hero-subir { from { opacity: 0; transform: translateY(18px); } }
+
+@media (max-width: 860px) {
+  .hero { min-height: 0; }
+  .hero__texto { padding: var(--esp-8) 0 var(--esp-7); }
+  .hero::before { background: linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .9)); }
+}

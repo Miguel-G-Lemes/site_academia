@@ -1,0 +1,9 @@
+/* Perguntas frequentes em sanfona (details) */
+.faq { display: grid; gap: var(--esp-3); max-width: 820px; margin-inline: auto; }
+.faq__item { border: 1px solid var(--cor-borda); border-radius: var(--raio-pequeno); background: var(--cor-cartao); transition: border-color var(--rapido); }
+.faq__item[open] { border-color: rgba(255, 59, 68, .5); }
+.faq__item summary { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-4); min-height: 56px; padding: var(--esp-4) var(--esp-5); font-weight: 600; list-style: none; cursor: pointer; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: '+'; flex: none; color: var(--cor-vermelho-vivo); font-size: 1.7rem; line-height: 1; transition: transform var(--rapido); }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item p { margin: 0; padding: 0 var(--esp-5) var(--esp-5); color: var(--cor-texto-suave); }

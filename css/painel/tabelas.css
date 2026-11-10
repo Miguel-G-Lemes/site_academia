@@ -1,0 +1,9 @@
+/* Tabelas limpas, com rolagem lateral em telas pequenas */
+.tabela { overflow-x: auto; border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: var(--esp-4); border-bottom: 1px solid var(--cor-borda); text-align: left; white-space: nowrap; }
+th { background: var(--cor-cartao-alto); color: var(--cor-texto-suave); font-size: var(--texto-pequeno); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+tr:hover > td { background: rgba(255, 255, 255, .03); }
+td .btn + .btn { margin-left: var(--esp-2); }
+td select { min-height: 40px; }

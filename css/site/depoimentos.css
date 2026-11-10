@@ -1,0 +1,8 @@
+/* Depoimentos: foto (ou iniciais), nome e frase */
+.depoimentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); }
+.depoimento { display: flex; flex-direction: column; gap: var(--esp-5); margin: 0; padding: var(--esp-6); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
+.depoimento blockquote { margin: 0; font-size: var(--texto-grande); }
+.depoimento figcaption { display: flex; align-items: center; gap: var(--esp-3); margin-top: auto; font-weight: 600; }
+.avatar { display: grid; place-items: center; flex: none; width: 52px; height: 52px; overflow: hidden; border-radius: 50%; background: var(--cor-vermelho-escuro); color: #fff; font: 400 1.5rem var(--fonte-titulo); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 960px) { .depoimentos { grid-template-columns: 1fr; } }

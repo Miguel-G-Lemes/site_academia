@@ -1,0 +1,5 @@
+/* Contato */
+.contato__ajuda { max-width: 56ch; margin: 0 0 var(--esp-5); padding: var(--esp-4) var(--esp-5); border-left: 4px solid var(--cor-vermelho-vivo); border-radius: var(--raio-pequeno); background: rgba(229, 32, 43, .14); }
+.contato__ajuda[hidden] { display: none; }
+.contato__lista { display: grid; gap: var(--esp-3); margin: 0; padding: 0; list-style: none; font-size: var(--texto-grande); }
+.contato__lista a { font-weight: 600; text-underline-offset: 4px; }

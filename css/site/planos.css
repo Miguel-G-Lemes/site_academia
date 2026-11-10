@@ -1,0 +1,15 @@
+/* Planos: cartões grandes com benefícios, selo "Mais escolhido" e economia */
+.planos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-6); max-width: 920px; margin-inline: auto; }
+.cartao-plano { position: relative; display: flex; flex-direction: column; gap: var(--esp-4); padding: var(--esp-7) var(--esp-6) var(--esp-6); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
+.cartao-plano--destaque { border-color: var(--cor-vermelho); background: linear-gradient(180deg, rgba(229, 32, 43, .16), var(--cor-cartao) 60%); box-shadow: var(--brilho); }
+.cartao-plano .selo { position: absolute; top: -14px; left: var(--esp-6); }
+.cartao-plano h3 { font-size: 2.6rem; }
+.plano__preco { font: 400 4.2rem/1 var(--fonte-titulo); }
+.plano__preco small { margin-left: var(--esp-2); color: var(--cor-texto-suave); font: 500 var(--texto-base) var(--fonte-texto); }
+.plano__equivale { margin: calc(-1 * var(--esp-2)) 0 0; color: var(--cor-vermelho-vivo); font-weight: 600; }
+.plano__descricao { margin: 0; color: var(--cor-texto-suave); }
+.plano__beneficios { display: grid; gap: var(--esp-3); margin: var(--esp-2) 0 var(--esp-4); padding: 0; list-style: none; }
+.plano__beneficios li { display: flex; gap: var(--esp-3); }
+.plano__beneficios svg { flex: none; width: 20px; height: 20px; margin-top: 3px; color: var(--cor-vermelho-vivo); }
+.cartao-plano .btn { margin-top: auto; }
+@media (max-width: 760px) { .planos { grid-template-columns: 1fr; } }

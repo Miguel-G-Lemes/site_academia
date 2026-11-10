@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nos conheça | Academia Marte</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=hotbar2">
+  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+</head>
+<body class="site">
+  <header class="topo" id="topo"></header>
+
+  <main>
+    <section class="pagina-topo">
+      <div class="container">
+        <h1>Nos <span class="destaque">conheça</span></h1>
+        <p>A história da Academia Marte: do galpão vazio ao lugar onde milhares de pessoas encontraram o seu ritmo.</p>
+      </div>
+    </section>
+
+    <section class="secao">
+      <div class="container historia">
+        <div data-revelar>
+          <h2>Como tudo começou</h2>
+          <p>A Marte nasceu em 2011, em um galpão abandonado de 400 m². A ideia foi de dois amigos: Helena Prado, educadora física, e Rodrigo Tavares, fisioterapeuta. Eles se conheceram em uma clínica de reabilitação e perceberam que faltava um lugar que unisse treino de verdade e cuidado com a saúde.</p>
+          <p>O nome surgiu numa conversa de madrugada sobre o planeta vermelho: um destino que parece distante, mas que se alcança com planejamento, disciplina e uma boa equipe. Era exatamente o que eles queriam oferecer a cada aluno.</p>
+        </div>
+        <figure class="foto" data-rotulo="Nossa história" data-revelar>
+          <img src="assets/musculacao.png" alt="Aluna treinando na sala de musculação da Academia Marte" loading="lazy" onerror="this.parentElement.classList.add('foto--vazia');this.remove()">
+        </figure>
+      </div>
+    </section>
+
+    <section class="secao secao--grafite">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>As dificuldades do caminho</h2>
+          <p class="secao__intro">Nada foi fácil, e cada obstáculo moldou o jeito como cuidamos de quem treina aqui.</p>
+        </div>
+        <div class="desafios" data-revelar>
+          <div class="desafio"><h3>A obra que não terminava</h3><p>Infiltrações e atrasos no alvará adiaram a inauguração em oito meses. Os primeiros alunos treinaram em um espaço alugado às pressas.</p></div>
+          <div class="desafio"><h3>Equipamentos e confiança</h3><p>Sem verba para aparelhos novos, começamos com máquinas reformadas e trocamos uma a uma, conforme a academia crescia.</p></div>
+          <div class="desafio"><h3>Os anos difíceis</h3><p>Em 2015, a crise econômica afastou muitos alunos. Cortamos custos da gestão, nunca da qualidade do atendimento.</p></div>
+          <div class="desafio"><h3>O recomeço</h3><p>Em 2020, ficamos meses de portas fechadas. Aulas online, uma reabertura cuidadosa e o apoio dos alunos mantiveram a equipe unida.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>Nossa trajetória</h2>
+          <p class="secao__intro">Cada conquista veio de ouvir quem treina aqui. A história é um texto de exemplo: troque pelos fatos reais.</p>
+        </div>
+        <ul class="linha-tempo" data-revelar>
+          <li><strong>2011</strong>Inauguração da Marte, com musculação e aeróbico.</li>
+          <li><strong>2013</strong>Chegada do pilates, em uma sala própria.</li>
+          <li><strong>2016</strong>Piscina climatizada para natação e hidroginástica, com turmas por faixa etária.</li>
+          <li><strong>2020</strong>Reinvenção da rotina e retomada com protocolos de segurança.</li>
+          <li><strong>Hoje</strong>Seis modalidades, equipe especializada e agendamento de aulas experimentais pelo site.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="chamada">
+      <div class="container chamada__conteudo">
+        <h2>Venha escrever o próximo capítulo com a gente.</h2>
+        <a class="btn btn--grande" href="index.html#agendar">Agendar aula experimental</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/dados-site.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/layout/cabecalho.js"></script>
+  <script src="js/layout/rodape.js"></script>
+  <script src="js/layout/flutuantes.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/conta.js"></script>
+  <script src="js/revelar.js"></script>
+</body>
+</html>

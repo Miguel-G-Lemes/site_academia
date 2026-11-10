@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assinar um plano | Academia Marte</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=hotbar2">
+  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+</head>
+<body class="site" data-sem-barra>
+  <header class="topo" id="topo"></header>
+
+  <main>
+    <section class="pagina-topo">
+      <div class="container">
+        <h1>Comece hoje a sua evolução</h1>
+        <p>Escolha o plano e as modalidades, confirme o pagamento e já faça parte da Academia Marte.</p>
+      </div>
+    </section>
+
+    <section class="secao">
+      <div class="container assinatura">
+        <form class="assinatura__form" id="formulario-assinatura" novalidate>
+          <fieldset>
+            <legend>Escolha seu plano</legend>
+            <div class="opcoes-plano">
+              <label class="opcao-plano">
+                <input type="radio" name="plano" value="mensal" id="plano-mensal">
+                <span><strong>Mensal</strong><em data-preco="mensal"></em><small>por mês</small></span>
+              </label>
+              <label class="opcao-plano">
+                <input type="radio" name="plano" value="anual" id="plano-anual">
+                <span><strong>Anual</strong><em data-preco="anual"></em><small>por ano</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>O que você vai treinar</legend>
+            <p class="dica-form">Marque ao menos uma modalidade.</p>
+            <div class="opcoes" id="modalidades"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Seus dados</legend>
+            <label class="campo">Nome completo<input id="nome" autocomplete="name" required></label>
+            <div class="campos-2">
+              <label class="campo">E-mail<input id="email" type="email" autocomplete="email" required></label>
+              <label class="campo">Telefone<input id="telefone" type="tel" autocomplete="tel" required></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Pagamento</legend>
+            <p class="demo">Ambiente de demonstração: o pagamento é simulado, nada é cobrado e os dados do cartão não são enviados nem guardados.</p>
+            <label class="campo">Nome no cartão<input id="cartao-nome" autocomplete="off"></label>
+            <label class="campo">Número do cartão<input id="cartao-numero" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000"></label>
+            <div class="campos-2">
+              <label class="campo">Validade<input id="cartao-validade" inputmode="numeric" autocomplete="off" placeholder="MM/AA"></label>
+              <label class="campo">Código de segurança<input id="cartao-cvv" inputmode="numeric" autocomplete="off" placeholder="123"></label>
+            </div>
+          </fieldset>
+
+          <p class="retorno" id="retorno" role="status"></p>
+          <button class="btn assinatura__pagar" id="pagar">Pagar</button>
+        </form>
+
+        <aside class="resumo" aria-label="Resumo da assinatura">
+          <h2>Seu plano</h2>
+          <dl>
+            <dt>Plano</dt><dd id="resumo-plano"></dd>
+            <dt>Valor</dt><dd id="resumo-valor"></dd>
+            <dt>Modalidades</dt><dd id="resumo-modalidades"></dd>
+          </dl>
+          <p>Ao concluir, você já aparece como aluno na academia e a equipe recebe o seu cadastro.</p>
+        </aside>
+      </div>
+
+      <div class="container" id="sucesso" hidden>
+        <div class="sucesso">
+          <span class="sucesso__icone"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+          <h2>Pagamento aprovado!</h2>
+          <p>Bem-vindo à Academia Marte. Seu cadastro de aluno já foi criado.</p>
+          <ul class="sucesso__detalhes" id="sucesso-detalhes"></ul>
+          <p>Para acompanhar seu plano, crie sua conta na Área do aluno usando o e-mail <strong id="sucesso-email"></strong>.</p>
+          <a class="btn" href="aluno.html">Ir para a Área do aluno</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/dados-site.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/layout/cabecalho.js"></script>
+  <script src="js/layout/rodape.js"></script>
+  <script src="js/layout/flutuantes.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/conta.js"></script>
+  <script src="js/revelar.js"></script>
+  <script src="js/planos.js"></script>
+  <script src="js/assinatura.js"></script>
+</body>
+</html>

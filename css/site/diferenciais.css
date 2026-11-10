@@ -1,0 +1,7 @@
+/* Diferenciais: cartões grafite com ícone */
+.diferenciais { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--esp-5); }
+.diferencial { display: flex; align-items: flex-start; gap: var(--esp-4); padding: var(--esp-5); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
+.diferencial__icone { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--raio-pequeno); background: rgba(229, 32, 43, .16); color: var(--cor-vermelho-vivo); }
+.diferencial__icone svg { width: 24px; height: 24px; }
+.diferencial h3 { margin-bottom: var(--esp-2); font-size: 1.6rem; }
+.diferencial p { margin: 0; color: var(--cor-texto-suave); }

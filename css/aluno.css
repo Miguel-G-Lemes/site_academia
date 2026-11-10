@@ -1,0 +1,24 @@
+/* Área do aluno: login e consulta do próprio plano, no mesmo visual escuro do site */
+@import url('base.css?v=hotbar2');
+@import url('componentes/formularios.css?v=hotbar2');
+@import url('componentes/selos.css?v=hotbar2');
+@import url('componentes/voltar.css?v=hotbar2');
+
+body.aluno { min-height: 100vh; background: radial-gradient(800px 480px at 85% 0, rgba(229, 32, 43, .3), transparent 70%), var(--cor-fundo); }
+.aluno__pagina { max-width: 560px; margin: 0 auto; padding: 96px var(--esp-5) var(--esp-8); }
+.aluno__marca { display: flex; align-items: center; justify-content: center; gap: var(--esp-3); margin-bottom: var(--esp-6); font: 400 2rem/1 var(--fonte-titulo); letter-spacing: .04em; }
+.aluno__marca svg { width: 44px; height: 44px; }
+
+.caixa { margin-bottom: var(--esp-5); padding: var(--esp-6); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
+.caixa h1 { margin-bottom: var(--esp-4); font-size: 3rem; }
+.caixa h2 { margin-bottom: var(--esp-3); font-size: 1.9rem; }
+.caixa ul { margin: 0; padding-left: var(--esp-5); color: var(--cor-texto-suave); }
+.caixa p { margin: 0 0 var(--esp-4); }
+
+.abas { display: flex; gap: var(--esp-2); margin-bottom: var(--esp-5); }
+.abas button { flex: 1; min-height: 48px; padding: var(--esp-2); border: 1px solid var(--cor-borda); border-radius: var(--raio-pilula); background: none; color: var(--cor-texto); font: 600 var(--texto-base) var(--fonte-texto); cursor: pointer; transition: background var(--rapido), border-color var(--rapido); }
+.abas button:hover { border-color: var(--cor-vermelho); }
+.abas .ativa { border-color: var(--cor-vermelho); background: var(--cor-vermelho); color: #fff; }
+
+.dica { color: var(--cor-texto-suave); font-size: var(--texto-pequeno); }
+.plano-destaque { font: 400 2.4rem/1 var(--fonte-titulo); }

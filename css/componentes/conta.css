@@ -1,0 +1,23 @@
+/* Menu da conta (aluno logado) no cabeçalho */
+.conta { position: relative; }
+.conta__botao {
+  display: inline-flex; align-items: center; gap: var(--esp-3); max-width: 240px; min-height: 48px; padding: .6rem 1.1rem;
+  border: 1px solid var(--cor-borda); border-radius: var(--raio-pilula); background: var(--cor-cartao); color: var(--white);
+  font: 600 var(--texto-base) var(--fonte-texto); cursor: pointer; transition: border-color var(--rapido);
+}
+.conta__botao:hover { border-color: var(--cor-vermelho); }
+.conta__botao svg { flex: none; width: 18px; height: 18px; }
+.conta__botao span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.conta__botao svg:last-child { transition: transform var(--rapido); }
+.conta__botao[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+.conta__menu {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 20; min-width: 210px; margin: 0; padding: var(--esp-2);
+  list-style: none; border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); box-shadow: var(--sombra);
+}
+.conta__menu[hidden] { display: none; }
+.conta__menu button {
+  display: block; width: 100%; min-height: 44px; padding: .7rem var(--esp-4); border: 0; border-radius: var(--raio-pequeno);
+  background: none; color: var(--white); font: 500 var(--texto-base) var(--fonte-texto); text-align: left; cursor: pointer;
+}
+.conta__menu button:hover { background: var(--cor-cartao-alto); color: var(--red-vivo); }
+.conta__menu [data-acao="sair"] { color: #ff8a80; }

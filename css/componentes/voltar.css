@@ -1,0 +1,4 @@
+/* Botão quadrado com seta para voltar ao site (telas de login) */
+.voltar { position: fixed; top: var(--esp-4); left: var(--esp-4); z-index: 5; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .3); border-radius: var(--raio-pequeno); background: rgba(0, 0, 0, .6); color: var(--white); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: border-color var(--rapido); }
+.voltar:hover { border-color: var(--cor-vermelho-vivo); }
+.voltar svg { width: 22px; height: 22px; }

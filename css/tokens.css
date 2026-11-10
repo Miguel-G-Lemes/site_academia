@@ -1,0 +1,68 @@
+/* Tokens de design: única fonte de cores, fontes, espaçamentos, raios, sombras e movimento */
+:root {
+  /* Cores */
+  --cor-fundo: #000000;
+  --cor-cartao: #141416;             /* cinza-grafite dos cartões */
+  --cor-cartao-alto: #1d1d21;        /* grafite mais claro: hover e campos */
+  --cor-borda: #2b2b30;
+  --cor-vermelho: #e5202b;           /* botões e áreas de ação (texto branco: contraste 4,6:1) */
+  --cor-vermelho-vivo: #ff3b44;      /* números, ícones e texto sobre fundo escuro (contraste 5,9:1) */
+  --cor-vermelho-escuro: #5a0b11;    /* fundos e brilhos */
+  --cor-texto: #f5f5f6;
+  --cor-texto-suave: #b9b9c0;        /* contraste de 6:1 ou mais sobre preto e sobre grafite */
+  --cor-ok: #4ade80;
+  --cor-aviso: #fbbf24;
+  --cor-erro: #ff6b6b;
+
+  /* Tipografia */
+  --fonte-titulo: 'Bebas Neue', 'Oswald', Impact, sans-serif;
+  --fonte-texto: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --texto-pequeno: .875rem;
+  --texto-base: 1rem;
+  --texto-grande: 1.125rem;
+  --titulo-pagina: clamp(3.6rem, 9vw, 7.2rem);
+  --titulo-secao: clamp(2.7rem, 6vw, 4.4rem);
+  --titulo-cartao: 1.9rem;
+
+  /* Espaçamentos (escala única) */
+  --esp-1: .25rem;
+  --esp-2: .5rem;
+  --esp-3: .75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-7: 3rem;
+  --esp-8: 4.5rem;
+  --esp-9: 7rem;                     /* respiro entre seções */
+  --largura: 1200px;
+  --altura-topo: 76px;
+
+  /* Forma, profundidade e fotos */
+  --raio: 18px;
+  --raio-pequeno: 12px;
+  --raio-pilula: 999px;
+  --sombra: 0 18px 50px rgba(0, 0, 0, .55);
+  --brilho: 0 0 70px rgba(229, 32, 43, .28);
+  --filtro-foto: grayscale(.2) contrast(1.05) brightness(.82);   /* mesmo tratamento em todas as fotos */
+
+  /* Movimento */
+  --rapido: .2s;
+  --suave: .6s;
+  --curva: cubic-bezier(.2, .8, .2, 1);
+
+  /* Cabeçalho: "relative" deixa a barra só no topo da página; "sticky" faz ela acompanhar a rolagem */
+  --topo-posicao: relative;
+
+  /* Nomes antigos, usados pelo painel e pela área do aluno até a etapa 4 */
+  --black: var(--cor-fundo);
+  --ink: var(--cor-cartao);
+  --line: var(--cor-borda);
+  --red: var(--cor-vermelho);
+  --red-dark: #b3161f;
+  --red-vivo: var(--cor-vermelho-vivo);
+  --white: #ffffff;
+  --muted-light: var(--cor-texto-suave);
+  --muted: var(--cor-texto-suave);
+  --text: var(--cor-texto);
+  --radius: var(--raio);
+}

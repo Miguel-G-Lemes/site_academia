@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Área do aluno | Academia Marte</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aluno.css?v=hotbar2">
+  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+</head>
+<body class="aluno">
+  <a class="voltar" href="index.html" aria-label="Voltar ao site"><svg aria-hidden="true"><use href="#i-voltar"/></svg></a>
+
+  <main class="aluno__pagina">
+    <div class="aluno__marca"><svg aria-hidden="true"><use href="#logo"/></svg>Academia Marte</div>
+
+    <div class="caixa" id="acesso">
+      <h1>Área do aluno</h1>
+      <div class="abas">
+        <button class="ativa" id="aba-entrar" type="button">Entrar</button>
+        <button id="aba-primeiro" type="button">Primeiro acesso</button>
+      </div>
+      <form id="formulario">
+        <label class="campo" id="rotulo-nome" hidden>Nome completo<input id="nome" autocomplete="name"></label>
+        <label class="campo">E-mail<input id="email" type="email" required autocomplete="email"></label>
+        <label class="campo">Senha<input id="senha" type="password" minlength="6" required autocomplete="current-password"></label>
+        <p class="retorno" id="retorno" role="status"></p>
+        <button class="btn btn--bloco" id="enviar">Entrar</button>
+      </form>
+      <p class="dica" id="dica-primeiro" hidden>Crie sua conta com nome, e-mail e senha (mínimo de 6 caracteres). Não precisa ser aluno para criar. Se você já for aluno, use o mesmo e-mail da matrícula para ver seu plano.</p>
+    </div>
+    <div id="meus-dados" hidden></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/aluno.js"></script>
+</body>
+</html>

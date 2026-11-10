@@ -1,0 +1,10 @@
+/* Botão flutuante do WhatsApp e barra fixa "Aula experimental" no celular */
+.whatsapp-flutuante { position: fixed; right: var(--esp-5); bottom: var(--esp-5); z-index: 60; display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: var(--cor-vermelho); color: #fff; box-shadow: var(--sombra), var(--brilho); transition: transform var(--rapido), background var(--rapido); }
+.whatsapp-flutuante:hover { background: var(--red-dark); transform: scale(1.06); }
+.whatsapp-flutuante svg { width: 30px; height: 30px; }
+.barra-mobile { display: none; }
+@media (max-width: 860px) {
+  body.com-barra-mobile { padding-bottom: 84px; }
+  .barra-mobile { position: fixed; right: 0; bottom: 0; left: 0; z-index: 55; display: block; padding: var(--esp-3) var(--esp-4) calc(var(--esp-3) + env(safe-area-inset-bottom)); border-top: 1px solid var(--cor-borda); background: rgba(0, 0, 0, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  body.com-barra-mobile .whatsapp-flutuante { bottom: calc(84px + var(--esp-3)); width: 56px; height: 56px; }
+}

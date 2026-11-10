@@ -1,0 +1,29 @@
+/* Modalidades: grade 3x2 de cartões e janela de detalhe */
+.modalidades { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); }
+.cartao-mod {
+  position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--cor-borda); border-radius: var(--raio);
+  background: var(--cor-cartao); transition: border-color var(--rapido), box-shadow var(--rapido);
+}
+.cartao-mod:hover, .cartao-mod:focus-within { border-color: rgba(255, 59, 68, .6); box-shadow: var(--brilho); }
+.cartao-mod .foto { aspect-ratio: 4 / 3; border-radius: 0; }
+.cartao-mod:hover .foto img { transform: scale(1.07); }
+.cartao-mod__corpo { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: var(--esp-2); padding: var(--esp-5); }
+.cartao-mod h3 { font-size: var(--titulo-cartao); }
+.cartao-mod p { margin: 0 0 var(--esp-2); color: var(--cor-texto-suave); }
+.cartao-mod .selo { margin-top: auto; }
+/* O botão do título cobre o cartão inteiro: clicar em qualquer parte abre o detalhe */
+.cartao-mod__abrir { padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
+.cartao-mod__abrir::after { content: ''; position: absolute; inset: 0; }
+.cartao-mod__abrir:focus-visible { outline: none; }
+.cartao-mod:focus-within { outline: 3px solid var(--cor-vermelho-vivo); outline-offset: 3px; }
+
+.detalhe-mod { display: grid; grid-template-columns: 1fr 1fr; }
+.detalhe-mod .foto { min-height: 100%; border-radius: 0; }
+.detalhe-mod__texto { padding: var(--esp-7) var(--esp-6); }
+.detalhe-mod__texto h2 { font-size: 3rem; }
+.detalhe-mod__texto p { margin: var(--esp-4) 0; }
+.detalhe-mod__texto ul { margin: 0 0 var(--esp-5); padding-left: var(--esp-5); color: var(--cor-texto-suave); }
+.detalhe-mod__texto li { margin-bottom: var(--esp-2); }
+
+@media (max-width: 960px) { .modalidades { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .modalidades, .detalhe-mod { grid-template-columns: 1fr; } .detalhe-mod .foto { aspect-ratio: 16 / 9; min-height: 0; } }

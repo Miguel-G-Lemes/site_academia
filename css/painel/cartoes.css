@@ -1,0 +1,10 @@
+/* Cartões de indicadores no topo das telas */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--esp-4); margin-bottom: var(--esp-6); }
+.card { padding: var(--esp-5); border: 1px solid var(--cor-borda); border-top: 3px solid var(--cor-vermelho); border-radius: var(--raio); background: var(--cor-cartao); }
+.card strong { display: block; font: 400 3.2rem/1 var(--fonte-titulo); letter-spacing: .02em; }
+.card span { color: var(--cor-texto-suave); }
+.card--ok { border-top-color: var(--cor-ok); }
+.card--ok strong { color: var(--cor-ok); }
+.card--alerta { border-top-color: var(--cor-aviso); }
+.card--alerta strong { color: var(--cor-aviso); }
+.card--erro strong { color: var(--cor-erro); }

@@ -1,0 +1,18 @@
+/* Login da equipe: marca com brilho vermelho de um lado, formulário do outro */
+.entrada { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 100vh; }
+.entrada__marca {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--esp-5); padding: var(--esp-8) var(--esp-7);
+  background: radial-gradient(700px 480px at 15% 10%, rgba(229, 32, 43, .5), transparent 70%),
+              radial-gradient(520px 420px at 95% 100%, rgba(90, 11, 17, .8), transparent 70%), var(--cor-fundo);
+}
+.entrada__marca svg { width: 72px; height: 72px; }
+.entrada__marca h1 { font-size: clamp(3.4rem, 6vw, 5.5rem); }
+.entrada__marca p { max-width: 34ch; margin: 0; color: var(--cor-texto-suave); font-size: var(--texto-grande); }
+.entrada__area { display: grid; place-items: center; padding: var(--esp-7) var(--esp-5); }
+.login { width: min(420px, 100%); padding: var(--esp-7) var(--esp-6); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); box-shadow: var(--sombra); }
+.login h2 { margin-bottom: var(--esp-5); font-size: 2.6rem; }
+.login__erro { min-height: 1.4em; margin: var(--esp-4) 0 0; color: var(--cor-erro); }
+@media (max-width: 860px) {
+  .entrada { grid-template-columns: 1fr; }
+  .entrada__marca { padding: 90px var(--esp-5) var(--esp-6); }
+}

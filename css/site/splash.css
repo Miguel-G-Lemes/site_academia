@@ -1,0 +1,16 @@
+/* Tela de abertura (uma vez por sessão) */
+#splash {
+  position: fixed; inset: 0; z-index: 300; display: grid; place-content: center; justify-items: center; gap: var(--esp-4);
+  background: radial-gradient(600px 400px at 50% 40%, rgba(229, 32, 43, .22), transparent 70%), var(--cor-fundo);
+  transition: opacity .6s, visibility .6s; cursor: pointer;
+}
+html.sem-splash #splash { display: none; }
+.splash--saindo { opacity: 0; visibility: hidden; }
+.splash__logo { width: 96px; height: 96px; animation: splash-entrada .7s var(--curva) both; }
+.splash__nome { font: 400 clamp(3rem, 9vw, 5.5rem)/1 var(--fonte-titulo); letter-spacing: .04em; animation: splash-subida .7s .25s both; }
+.splash__frase { margin: 0; color: var(--cor-texto-suave); animation: splash-subida .7s .45s both; }
+.splash__barra { width: 160px; height: 3px; overflow: hidden; border-radius: 3px; background: var(--cor-borda); }
+.splash__barra::after { content: ''; display: block; height: 100%; background: var(--cor-vermelho-vivo); animation: splash-barra 1.9s ease-out both; }
+@keyframes splash-entrada { from { opacity: 0; transform: scale(.6) rotate(-12deg); } }
+@keyframes splash-subida { from { opacity: 0; transform: translateY(14px); } }
+@keyframes splash-barra { from { width: 0; } to { width: 100%; } }

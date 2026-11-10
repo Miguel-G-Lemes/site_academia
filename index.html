@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Academia Marte | Estrutura completa para você evoluir</title>
+  <meta name="description" content="Seis modalidades, estrutura completa e equipe especializada. Agende sua aula experimental na Academia Marte.">
+  <script>
+    // Marca que o JavaScript está ativo e evita repetir a splash na mesma sessão (roda antes da página aparecer)
+    document.documentElement.classList.add('js');
+    if (sessionStorage.getItem('splashVista')) document.documentElement.classList.add('sem-splash');
+  </script>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=hotbar2">
+  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+</head>
+<body class="site">
+  <div id="splash" role="status" aria-label="Carregando Academia Marte">
+    <svg class="splash__logo" aria-hidden="true"><use href="#logo"/></svg>
+    <div class="splash__nome">Academia Marte</div>
+    <p class="splash__frase">Evolução em cada treino</p>
+    <div class="splash__barra"></div>
+  </div>
+
+  <header class="topo" id="topo"></header>
+
+  <main>
+    <section class="hero">
+      <figure class="hero__fundo">
+        <img src="assets/hero.jpg" alt="Aluno treinando supino com barra na sala de musculação" fetchpriority="high" onerror="this.remove()">
+      </figure>
+      <div class="container">
+        <div class="hero__texto">
+          <h1>Sua <span class="destaque">evolução</span> começa aqui.</h1>
+          <p class="hero__intro">Seis modalidades, estrutura completa e uma equipe especializada para levar o seu treino ao próximo nível. Comece com uma aula experimental.</p>
+          <div class="hero__acoes">
+            <a class="btn btn--grande" href="#agendar">Agendar aula experimental</a>
+            <a class="btn btn--grande btn--ghost" href="#modalidades">Conhecer modalidades</a>
+          </div>
+          <ul class="hero__confianca">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Aula experimental em todas as modalidades</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ambiente 100% climatizado</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Turmas reduzidas e equipe especializada</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="modalidades">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>Seis modalidades, um só lugar</h2>
+          <p class="secao__intro">Escolha por objetivo: força, fôlego, mobilidade ou diversão. Toque em um cartão para ver os detalhes.</p>
+        </div>
+        <div class="modalidades" id="lista-modalidades" data-revelar></div>
+      </div>
+    </section>
+
+    <section class="numeros" aria-label="A Academia Marte em números">
+      <div class="container"><ul class="numeros__lista" id="lista-numeros"></ul></div>
+    </section>
+
+    <section class="secao" id="diferenciais">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>Nossos diferenciais</h2>
+          <p class="secao__intro">O que faz a diferença no seu treino, do primeiro ao milésimo dia.</p>
+        </div>
+        <div class="diferenciais" data-revelar>
+          <div class="diferencial"><span class="diferencial__icone"><svg aria-hidden="true"><use href="#i-user-check"/></svg></span><div><h3>Atendimento personalizado</h3><p>Treinos ajustados ao seu objetivo por profissionais atentos.</p></div></div>
+          <div class="diferencial"><span class="diferencial__icone"><svg aria-hidden="true"><use href="#i-users"/></svg></span><div><h3>Turmas reduzidas</h3><p>Poucas vagas por aula para você receber atenção de verdade.</p></div></div>
+          <div class="diferencial"><span class="diferencial__icone"><svg aria-hidden="true"><use href="#i-snow"/></svg></span><div><h3>Ambiente climatizado</h3><p>Conforto térmico para treinar bem em qualquer época do ano.</p></div></div>
+          <div class="diferencial"><span class="diferencial__icone"><svg aria-hidden="true"><use href="#i-dumbbell"/></svg></span><div><h3>Equipamentos de ponta</h3><p>Aparelhos modernos e bem cuidados em todas as modalidades.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao secao--grafite" id="depoimentos">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>Quem treina na Marte</h2>
+          <p class="secao__intro">Depoimentos de exemplo: troque pelos de alunos reais em js/dados-site.js.</p>
+        </div>
+        <div class="depoimentos" id="lista-depoimentos" data-revelar></div>
+      </div>
+    </section>
+
+    <section class="secao" id="planos">
+      <div class="container">
+        <div class="secao__cabeca secao__cabeca--centro" data-revelar>
+          <h2>Escolha o seu plano</h2>
+          <p class="secao__intro">O melhor momento para começar é agora. Escolha o seu plano e comece a treinar com quem leva a sua evolução a sério.</p>
+        </div>
+        <div class="planos" id="lista-planos" data-revelar></div>
+      </div>
+    </section>
+
+    <section class="secao secao--grafite" id="agendar">
+      <div class="container">
+        <div class="secao__cabeca secao__cabeca--centro" data-revelar>
+          <h2>Agende sua aula experimental</h2>
+          <p class="secao__intro">Disponível em todas as modalidades. Escolha o dia e o horário e receba a confirmação na hora.</p>
+        </div>
+        <div class="experimental" data-revelar>
+          <figure class="foto experimental__foto" data-rotulo="Aula experimental">
+            <img src="assets/carafeliz.jpg" alt="Aluno sorrindo enquanto treina com halteres" loading="lazy" onerror="semImagem(this)">
+          </figure>
+          <form class="passos" id="formulario" novalidate>
+            <fieldset class="passo passo--ativo" id="passo-1">
+              <legend><span class="passo__numero">1</span>Escolha a modalidade</legend>
+              <div class="opcoes" id="modalidades-opcoes" role="radiogroup" aria-label="Modalidade"></div>
+              <div id="caixa-faixa" hidden>
+                <label class="campo" for="faixa">Faixa etária do participante
+                  <select id="faixa">
+                    <option value="adulto">Adulto (aula de 60 min)</option>
+                    <option value="crianca">Criança (aula de até 45 min)</option>
+                    <option value="idoso">Idoso (aula de até 45 min)</option>
+                  </select>
+                </label>
+                <p class="aviso" id="aviso-duracao"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="passo" id="passo-2" disabled>
+              <legend><span class="passo__numero">2</span>Escolha o dia</legend>
+              <label class="campo" for="data">Data desejada<input id="data" type="date" required></label>
+            </fieldset>
+
+            <fieldset class="passo" id="passo-3" disabled>
+              <legend><span class="passo__numero">3</span>Escolha o horário</legend>
+              <div class="horarios" id="horarios" role="radiogroup" aria-label="Horários disponíveis">
+                <p class="aviso">Escolha a modalidade e o dia para ver os horários.</p>
+              </div>
+            </fieldset>
+
+            <fieldset class="passo" id="passo-4" disabled>
+              <legend><span class="passo__numero">4</span>Seus dados</legend>
+              <label class="campo">Nome completo<input id="nome" autocomplete="name" required></label>
+              <div class="campos-2">
+                <label class="campo">Telefone<input id="telefone" type="tel" autocomplete="tel" required></label>
+                <label class="campo">E-mail<input id="email" type="email" autocomplete="email" required></label>
+              </div>
+              <label class="campo">Informações adicionais (opcional)<textarea id="observacoes" rows="3"></textarea></label>
+              <p class="retorno" id="retorno" role="status"></p>
+              <button class="btn btn--grande btn--bloco" id="confirmar">Confirmar agendamento</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas">
+      <div class="container">
+        <div class="secao__cabeca secao__cabeca--centro" data-revelar>
+          <h2>Perguntas frequentes</h2>
+          <p class="secao__intro">Respostas rápidas para as dúvidas mais comuns.</p>
+        </div>
+        <div class="faq" id="lista-faq" data-revelar></div>
+      </div>
+    </section>
+
+    <section class="secao secao--grafite" id="contato">
+      <div class="container">
+        <div class="secao__cabeca" data-revelar>
+          <h2>Fale com a gente</h2>
+          <p class="secao__intro">Tire suas dúvidas ou venha conhecer a academia. Os dados abaixo são exemplos: troque em js/dados-site.js.</p>
+        </div>
+        <p class="contato__ajuda" id="ajuda-contato" hidden>Precisa de ajuda? Entre em contato com a gente pelo telefone ou pelo e-mail abaixo. Nossa equipe responde o mais rápido possível.</p>
+        <ul class="contato__lista" id="lista-contato"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/dados-site.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/layout/cabecalho.js"></script>
+  <script src="js/layout/rodape.js"></script>
+  <script src="js/layout/flutuantes.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/conta.js"></script>
+  <script src="js/splash.js"></script>
+  <script src="js/planos.js"></script>
+  <script src="js/modalidades.js"></script>
+  <script src="js/home/numeros.js"></script>
+  <script src="js/home/depoimentos.js"></script>
+  <script src="js/home/cartoes-planos.js"></script>
+  <script src="js/home/faq.js"></script>
+  <script src="js/home/contato.js"></script>
+  <script src="js/agendamento.js"></script>
+  <script src="js/revelar.js"></script>
+</body>
+</html>
