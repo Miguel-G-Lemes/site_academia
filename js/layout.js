@@ -1,7 +1,7 @@
 /* Monta a estrutura comum das páginas públicas: ícones, cabeçalho, rodapé e itens flutuantes.
    Depende de dados-site.js e de js/layout/*.js */
 (function montarLayout() {
-  const naHome = !/(nos-conheca|assinar|404)(\.html)?$/.test(location.pathname);
+  const naHome = !/(nos-conheca|assinar|assinante|404)(\.html)?$/.test(location.pathname);
   const home = naHome ? '' : 'index.html';                       // prefixo dos links para as seções da home
   const comBarra = document.body.dataset.semBarra === undefined;  // páginas podem desligar a barra do celular
 

@@ -1,0 +1,10 @@
+/* Tabela de tempo na academia: hoje, semana, mês e ano */
+.tempo { overflow-x: auto; border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-fundo); }
+.tempo table { width: 100%; min-width: 520px; border-collapse: collapse; }
+.tempo th { padding: var(--esp-4) var(--esp-5); background: var(--cor-cartao-alto); color: var(--cor-texto-suave); font-size: var(--texto-pequeno); font-weight: 600; text-align: left; }
+.tempo td { padding: var(--esp-4) var(--esp-5); border-top: 1px solid var(--cor-borda); }
+.tempo tbody th { background: none; color: var(--cor-texto); font-size: var(--texto-base); }
+.tempo tbody tr:first-child th { box-shadow: inset 4px 0 0 var(--cor-vermelho); }
+.tempo__valor { font: 400 2rem/1 var(--fonte-titulo); letter-spacing: .02em; }
+.tempo__valor--destaque { color: var(--cor-vermelho-vivo); }
+.tempo__nota { margin: var(--esp-4) 0 0; color: var(--cor-texto-suave); font-size: var(--texto-pequeno); }

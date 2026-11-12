@@ -58,7 +58,7 @@ function abrirConfiguracoes(user, nomeAtual, aoSalvar) {
 }
 
 // ---------- Aluno: só o nome, com menu ----------
-function montarAluno(acoes, user, nomeCompleto) {
+function montarAluno(acoes, user, nomeCompleto, assinante) {
   let nomeAtual = nomeCompleto;
   acoes.innerHTML = `
     <div class="conta">
@@ -66,6 +66,7 @@ function montarAluno(acoes, user, nomeCompleto) {
         ${iconeSvg('i-user')}<span>${esc(primeiroNome(nomeAtual))}</span>${iconeSvg('i-chevron')}
       </button>
       <ul class="conta__menu" role="menu" hidden>
+        ${assinante ? '<li><a role="menuitem" href="assinante.html">Área do assinante</a></li>' : ''}
         <li><button type="button" role="menuitem" data-acao="configuracoes">Configurações</button></li>
         <li><button type="button" role="menuitem" data-acao="ajuda">Ajuda</button></li>
         <li><button type="button" role="menuitem" data-acao="sair">Sair</button></li>
@@ -122,5 +123,6 @@ function montarEquipe(acoes) {
   if (equipe.data) return montarEquipe(acoes);
 
   const nome = (perfil.data && perfil.data.name) || (user.user_metadata && user.user_metadata.name) || user.email.split('@')[0];
-  montarAluno(acoes, user, nome);
+  const { data: planos } = await sb.from('student_plans').select('id').eq('status', 'ativo').gte('end_date', hoje()).limit(1);
+  montarAluno(acoes, user, nome, !!(planos && planos.length));
 })();

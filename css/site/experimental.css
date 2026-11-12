@@ -5,15 +5,17 @@
 .passo { min-width: 0; margin: 0; padding: var(--esp-5); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); transition: opacity var(--rapido), border-color var(--rapido); }
 .passo:disabled { opacity: .45; }
 .passo--ativo { border-color: rgba(255, 59, 68, .55); }
-.passo legend { display: flex; align-items: center; gap: var(--esp-3); margin-bottom: var(--esp-4); padding: 0; font: 400 1.7rem/1 var(--fonte-titulo); letter-spacing: .03em; }
+.passo legend { float: left; display: flex; align-items: center; gap: var(--esp-3); width: 100%; margin-bottom: var(--esp-4); padding: 0; font: 400 1.7rem/1 var(--fonte-titulo); letter-spacing: .03em; }
 .passo__numero { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--cor-vermelho); color: #fff; font: 600 .9rem var(--fonte-texto); }
+.passo legend + * { clear: both; }
 .passo .campo:last-child { margin-bottom: 0; }
+.passo__atalho { margin-bottom: var(--esp-4); }
 .horarios { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--esp-3); }
 .horarios .opcao__corpo { height: 100%; }
 .horarios strong { font-size: 1.2rem; }
 .experimental__enviar { margin-top: var(--esp-4); }
 @media (max-width: 960px) {
-  .experimental { grid-template-columns: 1fr; }
+  .experimental { grid-template-columns: minmax(0, 1fr); }
   .experimental__foto { min-height: 0; aspect-ratio: 16 / 9; }
 }
-@media (max-width: 640px) { .campos-2 { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .campos-2 { grid-template-columns: minmax(0, 1fr); } }

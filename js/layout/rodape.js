@@ -43,7 +43,7 @@ function rodapeHtml(home) {
       </div>
       <div class="rodape__base">
         <span>© ${new Date().getFullYear()} Academia Marte. Todos os direitos reservados.</span>
-        <nav aria-label="Áreas restritas"><a href="aluno.html">Área do aluno</a><a href="admin.html">Área da equipe</a></nav>
+        <nav aria-label="Área restrita"><a href="admin.html">Área da equipe</a></nav>
       </div>
     </div>`;
 }

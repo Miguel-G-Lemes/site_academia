@@ -104,6 +104,7 @@ function mostrarAluno(aluno) {
         ? `<p class="plano-destaque">Plano ${plano.kind}</p><p>Início: ${formatarData(plano.start_date)} · Vencimento: ${formatarData(plano.end_date)}</p>`
         : '<p>Você ainda não tem plano registrado.</p>'}
     </div>
+    ${['ativo', 'prox'].includes(situacao.classe) ? '<div class="caixa"><h2>Área do assinante</h2><p>Registre presença, veja seu tempo de treino, use o timer e consulte os exercícios.</p><a class="btn" href="assinante.html">Abrir a área do assinante</a></div>' : ''}
     <div class="caixa"><h2>Últimas presenças</h2>
       ${presencas.length
         ? `<ul>${presencas.map((p) => `<li>Entrada ${dataHora(p.check_in)}${p.check_out ? ' · saída ' + dataHora(p.check_out) : ''}</li>`).join('')}</ul>`

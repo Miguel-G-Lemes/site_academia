@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=hotbar2">
-  <link rel="stylesheet" href="css/hover.css?v=hotbar2">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/hover.css">
 </head>
 <body class="site">
   <div id="splash" role="status" aria-label="Carregando Academia Marte">
@@ -138,6 +138,7 @@
 
             <fieldset class="passo" id="passo-4" disabled>
               <legend><span class="passo__numero">4</span>Seus dados</legend>
+              <div class="passo__atalho"><button type="button" class="btn btn--ghost btn--pequeno" id="preencher-dados" hidden>Preencher com meus dados</button></div>
               <label class="campo">Nome completo<input id="nome" autocomplete="name" required></label>
               <div class="campos-2">
                 <label class="campo">Telefone<input id="telefone" type="tel" autocomplete="tel" required></label>

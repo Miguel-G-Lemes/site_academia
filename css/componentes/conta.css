@@ -21,3 +21,5 @@
 }
 .conta__menu button:hover { background: var(--cor-cartao-alto); color: var(--red-vivo); }
 .conta__menu [data-acao="sair"] { color: #ff8a80; }
+.conta__menu a { display: flex; align-items: center; min-height: 44px; padding: .7rem var(--esp-4); border-radius: var(--raio-pequeno); color: var(--white); font-weight: 500; text-decoration: none; }
+.conta__menu a:hover { background: var(--cor-cartao-alto); color: var(--red-vivo); }

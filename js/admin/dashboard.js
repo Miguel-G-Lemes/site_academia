@@ -8,7 +8,7 @@ async function renderPainel() {
     contar(sb.from('trial_bookings').select('*', contagem)),
     contar(sb.from('trial_bookings').select('*', contagem).eq('on_date', hoje()).neq('status', 'cancelada')),
     contar(sb.from('students').select('*', contagem).gte('created_at', inicioMes)),
-    contar(sb.from('attendance').select('*', contagem).is('check_out', null)),
+    contar(sb.from('attendance').select('*', contagem).is('check_out', null).gte('check_in', new Date(Date.now() - 12 * 3600 * 1000).toISOString())),
   ]);
 
   const planosAtivos = await sb.from('student_plans').select('kind,end_date').eq('status', 'ativo');

@@ -1,0 +1,26 @@
+/* Biblioteca de exercícios: fotos e vídeos, todos com nome */
+.exercicios__filtros { display: flex; flex-wrap: wrap; gap: var(--esp-4); margin-bottom: var(--esp-5); }
+.exercicios__filtros .campo { min-width: 220px; margin: 0; }
+.exercicios { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--esp-5); }
+.cartao-ex { position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-fundo); transition: border-color var(--rapido), box-shadow var(--rapido); }
+.cartao-ex:hover, .cartao-ex:focus-within { border-color: rgba(255, 59, 68, .6); box-shadow: var(--brilho); }
+.cartao-ex .foto { aspect-ratio: 4 / 3; border-radius: 0; }
+.cartao-ex:hover .foto img, .cartao-ex:hover .foto video { transform: scale(1.06); }
+.cartao-ex__corpo { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: var(--esp-2); padding: var(--esp-4) var(--esp-5) var(--esp-5); }
+.cartao-ex h3 { font-size: 1.7rem; }
+.cartao-ex p { margin: 0; color: var(--cor-texto-suave); font-size: var(--texto-pequeno); }
+.cartao-ex__abrir { padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
+.cartao-ex__abrir::after { content: ''; position: absolute; inset: 0; }
+.cartao-ex__abrir:focus-visible { outline: none; }
+.cartao-ex:focus-within { outline: 3px solid var(--cor-vermelho-vivo); outline-offset: 3px; }
+.foto video { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--filtro-foto); }
+.foto__play { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; }
+.foto__play span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--cor-vermelho); color: #fff; box-shadow: var(--sombra); }
+.foto__play svg { width: 24px; height: 24px; margin-left: 3px; fill: currentColor; }
+.visualizador { display: grid; }
+.visualizador__midia { background: #000; }
+.visualizador__midia img, .visualizador__midia video, .visualizador__midia iframe { display: block; width: 100%; max-height: 70vh; border: 0; }
+.visualizador__midia iframe { aspect-ratio: 16 / 9; height: auto; }
+.visualizador__texto { display: flex; flex-direction: column; align-items: flex-start; gap: var(--esp-3); padding: var(--esp-5) var(--esp-6) var(--esp-6); }
+.visualizador__texto h2 { margin: 0; font-size: 2.4rem; }
+.visualizador__texto p { margin: 0; }

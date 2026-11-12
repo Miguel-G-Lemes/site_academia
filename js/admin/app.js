@@ -4,14 +4,40 @@ const TELAS = {
   experimentais: renderExperimentais,
   alunos: renderAlunos,
   estatisticas: renderEstatisticas,
+  exercicios: renderExercicios,
 };
 
 const el = (id) => document.getElementById(id);
 
+let telaAtual = 'painel';
+
 function irPara(tela) {
+  telaAtual = tela;
   document.querySelectorAll('[data-tela]').forEach((b) => b.classList.toggle('ativo', b.dataset.tela === tela));
   conteudo().innerHTML = 'Carregando...';
   TELAS[tela]().catch(mostrarErro);
+}
+
+// Atualiza a tela aberta (mantendo os filtros) quando chega uma reserva nova
+function atualizarTelaAtual() {
+  if (telaAtual === 'painel') return renderPainel().catch(mostrarErro);
+  if (telaAtual === 'experimentais') {
+    return renderExperimentais({
+      modalidade: (el('f-modalidade') || {}).value,
+      status: (el('f-status') || {}).value,
+      data: (el('f-data') || {}).value,
+    }).catch(mostrarErro);
+  }
+}
+
+// Reservas de aula experimental aparecem na hora, sem recarregar (Supabase Realtime)
+function iniciarTempoReal() {
+  sb.channel('novas-reservas')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'trial_bookings' }, (evento) => {
+      aviso(`Nova aula experimental agendada: ${evento.new.name}`);
+      atualizarTelaAtual();
+    })
+    .subscribe();
 }
 
 async function entrar(usuario) {
@@ -27,6 +53,7 @@ async function entrar(usuario) {
   el('entrada').style.display = 'none';
   el('app').style.display = 'grid';
   irPara('painel');
+  iniciarTempoReal();
 }
 
 el('login').onsubmit = async (e) => {

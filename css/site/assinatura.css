@@ -3,7 +3,8 @@
 .assinatura[hidden] { display: none; }
 .assinatura__form { padding: var(--esp-6); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-cartao); }
 .assinatura__form fieldset { margin: 0 0 var(--esp-6); padding: 0; border: 0; }
-.assinatura__form legend { margin-bottom: var(--esp-4); padding: 0; font: 400 1.9rem/1 var(--fonte-titulo); letter-spacing: .03em; }
+.assinatura__form legend { float: left; width: 100%; margin-bottom: var(--esp-4); padding: 0; font: 400 1.9rem/1 var(--fonte-titulo); letter-spacing: .03em; }
+.assinatura__form legend + * { clear: both; }
 .dica-form { margin: calc(-1 * var(--esp-2)) 0 var(--esp-3); color: var(--cor-texto-suave); }
 .opcoes-plano { display: grid; grid-template-columns: 1fr 1fr; gap: var(--esp-3); }
 .opcao-plano input { position: absolute; opacity: 0; width: 1px; }
@@ -26,4 +27,4 @@
 .sucesso__icone svg { width: 30px; height: 30px; }
 .sucesso__detalhes { margin: var(--esp-4) 0; padding: 0; list-style: none; color: var(--cor-texto-suave); }
 .sucesso__detalhes li { padding: var(--esp-2) 0; }
-@media (max-width: 860px) { .assinatura, .opcoes-plano { grid-template-columns: 1fr; } .assinatura__form { padding: var(--esp-5); } }
+@media (max-width: 860px) { .assinatura, .opcoes-plano { grid-template-columns: minmax(0, 1fr); } .assinatura__form { padding: var(--esp-5); } }

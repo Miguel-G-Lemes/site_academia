@@ -1,12 +1,12 @@
 /* Entrada do CSS do painel da equipe: cada assunto tem o seu arquivo */
-@import url('base.css?v=hotbar2');
-@import url('componentes/formularios.css?v=hotbar2');
-@import url('componentes/selos.css?v=hotbar2');
-@import url('componentes/voltar.css?v=hotbar2');
-@import url('painel/entrada.css?v=hotbar2');
-@import url('painel/estrutura.css?v=hotbar2');
-@import url('painel/controles.css?v=hotbar2');
-@import url('painel/cartoes.css?v=hotbar2');
-@import url('painel/tabelas.css?v=hotbar2');
-@import url('painel/graficos.css?v=hotbar2');
-@import url('painel/vazio.css?v=hotbar2');
+@import url('base.css');
+@import url('componentes/formularios.css');
+@import url('componentes/selos.css');
+@import url('componentes/voltar.css');
+@import url('componentes/vazio.css');
+@import url('painel/entrada.css');
+@import url('painel/estrutura.css');
+@import url('painel/controles.css');
+@import url('painel/cartoes.css');
+@import url('painel/tabelas.css');
+@import url('painel/graficos.css');

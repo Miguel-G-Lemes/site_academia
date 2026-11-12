@@ -42,3 +42,16 @@ function situacaoPlano(plano) {
   if (plano.end_date <= somarDias(7)) return { texto: 'vence em breve', classe: 'prox' };
   return { texto: 'ativo', classe: 'ativo' };
 }
+
+// Estado vazio: astronauta com uma frase curta (site e painel)
+const vazioHtml = (frase) => `
+  <div class="vazio">
+    <img src="assets/astronauta.svg" alt="" width="140" height="140" loading="lazy">
+    <p>${frase}</p>
+  </div>`;
+
+// Chamada pelo onerror das fotos: sem arquivo, mostra um bloco vermelho e preto com o nome
+function semImagem(img) {
+  img.parentElement.classList.add('foto--vazia');
+  img.remove();
+}

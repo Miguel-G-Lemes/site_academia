@@ -28,9 +28,4 @@ function opcoes(lista, selecionado) {
 }
 
 // Estado vazio: astronauta com uma frase curta. Dentro de tabelas, ocupa a linha inteira.
-const vazioHtml = (frase) => `
-  <div class="vazio">
-    <img src="assets/astronauta.svg" alt="" width="140" height="140" loading="lazy">
-    <p>${frase}</p>
-  </div>`;
 const linhaVazia = (colunas, frase) => `<tr><td class="vazio-celula" colspan="${colunas}">${vazioHtml(frase)}</td></tr>`;

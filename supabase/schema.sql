@@ -225,6 +225,7 @@ declare
   m       public.modalities;
   need    int;
   new_id  uuid;
+  sid     uuid;
 begin
   -- trava a turma durante a reserva: impede overbooking
   select * into s from public.class_slots c where c.id = p_slot and c.active for update;
@@ -264,8 +265,11 @@ begin
     raise exception 'Este e-mail já reservou esta turma';
   end if;
 
-  insert into public.trial_bookings (name, phone, email, modality_id, slot_id, on_date, age_group, duration_min, notes)
-  values (trim(p_name), p_phone, trim(p_email), s.modality_id, s.id, p_date, p_age, need, p_notes)
+  -- Se quem reserva está logado como aluno, a reserva já fica ligada ao cadastro dele
+  select st.id into sid from public.students st where st.user_id = (select auth.uid());
+
+  insert into public.trial_bookings (name, phone, email, modality_id, slot_id, on_date, age_group, duration_min, notes, student_id)
+  values (trim(p_name), p_phone, trim(p_email), s.modality_id, s.id, p_date, p_age, need, p_notes, sid)
   returning trial_bookings.id into new_id;
 
   return json_build_object('id', new_id, 'modality', m.name, 'date', p_date, 'time', s.start_time, 'duration', need);
@@ -410,6 +414,134 @@ end $$;
 
 revoke execute on function public.subscribe_plan from public;
 grant  execute on function public.subscribe_plan to anon, authenticated;
+
+-- ---------------------------------------------------------------------
+-- 13. Área do assinante: presença, exercícios e avisos em tempo real
+-- ---------------------------------------------------------------------
+
+-- Assinante = aluno logado com plano ativo e dentro da validade
+create or replace function private.is_subscriber() returns boolean
+language sql stable security definer set search_path = '' as $$
+  select exists (
+    select 1 from public.student_plans p
+    join public.students s on s.id = p.student_id
+    where s.user_id = (select auth.uid())
+      and p.status = 'ativo'
+      and p.end_date >= (now() at time zone 'America/Sao_Paulo')::date
+  )
+$$;
+grant execute on function private.is_subscriber() to authenticated;
+
+-- Chegada: a hora é gravada pelo servidor, o aluno não escolhe o horário
+create or replace function public.student_checkin() returns json
+language plpgsql security definer set search_path = '' as $$
+declare
+  sid     uuid;
+  aberta  uuid;
+  nova    public.attendance;
+begin
+  select s.id into sid from public.students s where s.user_id = (select auth.uid());
+  if sid is null then raise exception 'Somente alunos matriculados registram presença'; end if;
+  if not (select private.is_subscriber()) then raise exception 'Seu plano não está ativo'; end if;
+
+  select a.id into aberta from public.attendance a
+  where a.student_id = sid and a.check_out is null and a.check_in > now() - interval '12 hours'
+  limit 1;
+  if aberta is not null then raise exception 'Você já registrou a chegada. Registre a saída antes de uma nova chegada'; end if;
+
+  insert into public.attendance (student_id) values (sid) returning * into nova;
+  return json_build_object('id', nova.id, 'check_in', nova.check_in);
+end $$;
+
+create or replace function public.student_checkout() returns json
+language plpgsql security definer set search_path = '' as $$
+declare
+  sid     uuid;
+  aberta  uuid;
+  saida   public.attendance;
+begin
+  select s.id into sid from public.students s where s.user_id = (select auth.uid());
+  if sid is null then raise exception 'Somente alunos matriculados registram presença'; end if;
+
+  select a.id into aberta from public.attendance a
+  where a.student_id = sid and a.check_out is null and a.check_in > now() - interval '12 hours'
+  order by a.check_in desc limit 1;
+  if aberta is null then raise exception 'Nenhuma chegada aberta para registrar a saída'; end if;
+
+  update public.attendance set check_out = now() where id = aberta returning * into saida;
+  return json_build_object('id', saida.id, 'check_in', saida.check_in, 'check_out', saida.check_out);
+end $$;
+
+revoke execute on function public.student_checkin, public.student_checkout from public;
+grant  execute on function public.student_checkin, public.student_checkout to authenticated;
+
+-- Biblioteca de exercícios (foto ou vídeo, sempre com nome)
+create table if not exists public.exercises (
+  id           uuid primary key default gen_random_uuid(),
+  name         text not null,
+  modality_id  text references public.modalities,
+  kind         text not null check (kind in ('foto', 'video')),
+  media_path   text,                                   -- arquivo no Storage (bucket "exercicios")
+  media_url    text,                                   -- ou link externo (YouTube, imagem, arquivo do site)
+  description  text,
+  active       boolean not null default true,
+  created_at   timestamptz not null default now(),
+  check (media_path is not null or media_url is not null)
+);
+create index if not exists exercises_modality_id_idx on public.exercises (modality_id);
+
+alter table public.exercises enable row level security;
+drop policy if exists staff_all on public.exercises;
+drop policy if exists subscribers_read on public.exercises;
+create policy staff_all on public.exercises for all to authenticated
+  using ((select private.is_staff())) with check ((select private.is_staff()));
+create policy subscribers_read on public.exercises for select to authenticated
+  using (active and (select private.is_subscriber()));
+grant select, insert, update, delete on public.exercises to authenticated;
+
+-- Arquivos de exercícios: bucket privado; a equipe envia, assinantes e equipe leem
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('exercicios', 'exercicios', false, 52428800,
+        array['image/jpeg', 'image/png', 'image/webp', 'video/mp4', 'video/webm'])
+on conflict (id) do nothing;
+
+drop policy if exists exercicios_leitura on storage.objects;
+drop policy if exists exercicios_envio on storage.objects;
+drop policy if exists exercicios_edicao on storage.objects;
+drop policy if exists exercicios_exclusao on storage.objects;
+create policy exercicios_leitura on storage.objects for select to authenticated
+  using (bucket_id = 'exercicios' and ((select private.is_staff()) or (select private.is_subscriber())));
+create policy exercicios_envio on storage.objects for insert to authenticated
+  with check (bucket_id = 'exercicios' and (select private.is_staff()));
+create policy exercicios_edicao on storage.objects for update to authenticated
+  using (bucket_id = 'exercicios' and (select private.is_staff()));
+create policy exercicios_exclusao on storage.objects for delete to authenticated
+  using (bucket_id = 'exercicios' and (select private.is_staff()));
+
+-- Exercícios de exemplo, usando as fotos do próprio site (troque ou apague pelo painel)
+insert into public.exercises (name, modality_id, kind, media_url, description)
+select v.name, v.modality_id, 'foto', v.media_url, v.description
+from (values
+  ('Supino reto com barra', 'musculacao', 'assets/hero.jpg', 'Deite no banco, desça a barra até o peito e empurre sem tirar os pés do chão.'),
+  ('Agachamento no Smith', 'musculacao', 'assets/musculacao.png', 'Pés na largura dos ombros; desça com controle até as coxas ficarem paralelas ao chão.'),
+  ('Desenvolvimento de ombros com halteres', 'musculacao', 'assets/carafeliz.jpg', 'Empurre os halteres acima da cabeça sem arquear a lombar.'),
+  ('Caminhada e corrida na esteira', 'aerobico', 'assets/aerobico.png', 'Comece com 5 minutos de aquecimento em ritmo leve.'),
+  ('Abdominal na bola de pilates', 'pilates', 'assets/pilates.jpg', 'Apoie as costas na bola e eleve o tronco com controle, expirando na subida.'),
+  ('Nado com prancha', 'natacao', 'assets/natacao.jpg', 'Segure a prancha com os braços estendidos e trabalhe as pernas com batidas curtas.'),
+  ('Hidroginástica com halteres aquáticos', 'hidro', 'assets/hidro.png', 'Braços abertos na altura dos ombros; empurre a água para baixo e para cima.'),
+  ('Coreografia em grupo', 'danca', 'assets/danca.png', 'Acompanhe a professora e mantenha o ritmo da turma.')
+) as v(name, modality_id, media_url, description)
+where not exists (select 1 from public.exercises e where e.name = v.name);
+
+-- Novas reservas de aula experimental aparecem na hora no painel (Supabase Realtime)
+do $$
+begin
+  if exists (select 1 from pg_publication where pubname = 'supabase_realtime')
+     and not exists (select 1 from pg_publication_tables
+                     where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'trial_bookings') then
+    alter publication supabase_realtime add table public.trial_bookings;
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------
 -- Depois de rodar: crie o usuário em Authentication > Users e libere-o como equipe:

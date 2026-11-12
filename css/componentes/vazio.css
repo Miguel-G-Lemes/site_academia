@@ -1,0 +1,5 @@
+/* Estado vazio: astronauta com uma frase curta */
+.vazio { display: grid; justify-items: center; gap: var(--esp-3); padding: var(--esp-7) var(--esp-4); text-align: center; }
+.vazio img { width: 140px; height: auto; }
+.vazio p { max-width: 34ch; margin: 0; color: var(--cor-texto); font-size: var(--texto-grande); }
+.vazio-celula { padding: 0; white-space: normal; text-align: center; }

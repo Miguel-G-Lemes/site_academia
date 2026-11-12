@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Área do assinante | Academia Marte</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/hover.css">
+</head>
+<body class="site" data-sem-barra>
+  <header class="topo" id="topo"></header>
+
+  <main>
+    <section class="pagina-topo">
+      <div class="container">
+        <h1>Área do <span class="destaque">assinante</span></h1>
+        <p id="assinante-saudacao">Presença, tempo de treino, timer e biblioteca de exercícios em um só lugar.</p>
+      </div>
+    </section>
+
+    <p class="container aviso" id="assinante-carregando" style="margin-block: 3rem">Carregando a sua área…</p>
+    <section class="container assinante" id="assinante-bloqueio" hidden></section>
+
+    <div class="container assinante" id="assinante-conteudo" hidden>
+      <nav class="assinante__atalhos" aria-label="Seções da área do assinante">
+        <a class="atalho" href="#presenca">Presença</a>
+        <a class="atalho" href="#tempo">Meu tempo</a>
+        <a class="atalho" href="#timer">Timer</a>
+        <a class="atalho" href="#exercicios">Exercícios</a>
+      </nav>
+
+      <section class="bloco" id="presenca">
+        <h2>Presença</h2>
+        <p class="bloco__intro">Marque quando chegar e quando sair. É com esses horários que contamos o seu tempo de treino.</p>
+        <div class="presenca">
+          <div class="presenca__estado">
+            <p class="presenca__titulo" id="presenca-titulo">Carregando…</p>
+            <p class="presenca__detalhe" id="presenca-detalhe"></p>
+          </div>
+          <div class="presenca__acoes">
+            <button class="btn btn--grande" id="btn-chegada" disabled>Cheguei</button>
+            <button class="btn btn--grande btn--ghost" id="btn-saida" disabled>Saí</button>
+          </div>
+        </div>
+        <p class="retorno" id="presenca-retorno" role="status"></p>
+      </section>
+
+      <section class="bloco" id="tempo">
+        <h2>Meu tempo na academia</h2>
+        <p class="bloco__intro">Quanto tempo você treinou hoje, nesta semana, neste mês e neste ano.</p>
+        <div class="tempo">
+          <table>
+            <thead><tr><th scope="col">Período</th><th scope="col">Tempo na academia</th><th scope="col">Visitas</th><th scope="col">Média por visita</th></tr></thead>
+            <tbody id="tabela-tempo"></tbody>
+          </table>
+        </div>
+        <p class="tempo__nota" id="tempo-nota"></p>
+      </section>
+
+      <section class="bloco" id="timer">
+        <h2>Timer de treino</h2>
+        <p class="bloco__intro">Use o descanso entre as séries ou o cronômetro com voltas.</p>
+        <div class="timer__abas" role="tablist" aria-label="Tipo de timer">
+          <button class="timer__aba" role="tab" id="aba-descanso" aria-selected="true" aria-controls="painel-descanso">Descanso</button>
+          <button class="timer__aba" role="tab" id="aba-cronometro" aria-selected="false" aria-controls="painel-cronometro">Cronômetro</button>
+        </div>
+
+        <div class="timer__painel" id="painel-descanso" role="tabpanel" aria-labelledby="aba-descanso">
+          <p class="timer__visor" id="descanso-visor">01:00</p>
+          <div class="timer__barra" aria-hidden="true"><span id="descanso-barra"></span></div>
+          <div class="timer__atalhos" id="descanso-atalhos"></div>
+          <div class="timer__personalizado">
+            <label class="campo">Minutos<input id="descanso-min" type="number" min="0" max="59" value="1" inputmode="numeric"></label>
+            <label class="campo">Segundos<input id="descanso-seg" type="number" min="0" max="59" value="0" inputmode="numeric"></label>
+            <button class="btn btn--ghost" id="descanso-definir" type="button">Definir tempo</button>
+          </div>
+          <div class="timer__acoes">
+            <button class="btn btn--grande" id="descanso-iniciar" type="button">Iniciar</button>
+            <button class="btn btn--grande btn--ghost" id="descanso-zerar" type="button">Zerar</button>
+          </div>
+          <p class="timer__mensagem" id="descanso-fim" role="status"></p>
+        </div>
+
+        <div class="timer__painel" id="painel-cronometro" role="tabpanel" aria-labelledby="aba-cronometro" hidden>
+          <p class="timer__visor" id="cronometro-visor">00:00.0</p>
+          <div class="timer__acoes">
+            <button class="btn btn--grande" id="cronometro-iniciar" type="button">Iniciar</button>
+            <button class="btn btn--grande btn--ghost" id="cronometro-volta" type="button" disabled>Volta</button>
+            <button class="btn btn--grande btn--ghost" id="cronometro-zerar" type="button">Zerar</button>
+          </div>
+          <ol class="voltas" id="cronometro-voltas"></ol>
+        </div>
+      </section>
+
+      <section class="bloco" id="exercicios">
+        <h2>Exercícios</h2>
+        <p class="bloco__intro">Fotos e vídeos dos exercícios, todos com nome. Toque em um para ver em tamanho grande.</p>
+        <div class="exercicios__filtros">
+          <label class="campo">Modalidade<select id="ex-modalidade"></select></label>
+          <label class="campo">Tipo<select id="ex-tipo"><option value="">Fotos e vídeos</option><option value="foto">Fotos</option><option value="video">Vídeos</option></select></label>
+        </div>
+        <div class="exercicios" id="lista-exercicios" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rodape" id="rodape"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/confirmar.js"></script>
+  <script src="js/dados-site.js"></script>
+  <script src="js/layout/icones.js"></script>
+  <script src="js/layout/cabecalho.js"></script>
+  <script src="js/layout/rodape.js"></script>
+  <script src="js/layout/flutuantes.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/conta.js"></script>
+  <script src="js/assinante/acesso.js"></script>
+  <script src="js/assinante/tempo.js"></script>
+  <script src="js/assinante/presenca.js"></script>
+  <script src="js/assinante/timer.js"></script>
+  <script src="js/assinante/exercicios.js"></script>
+  <script src="js/assinante.js"></script>
+</body>
+</html>

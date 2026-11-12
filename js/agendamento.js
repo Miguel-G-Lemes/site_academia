@@ -1,6 +1,6 @@
 /* Aula experimental em passos: modalidade, dia, horário e dados.
    A reserva usa as mesmas funções do banco de antes (available_slots e book_trial). */
-const estado = { modalidades: [], horario: null, pedida: null };
+const estado = { modalidades: [], horario: null, pedida: null, dadosConta: null };
 const campo = (id) => document.getElementById(id);
 const POUCAS_VAGAS = 2;                        // a partir daqui aparece o selo "Poucas vagas"
 
@@ -137,6 +137,32 @@ async function confirmarAgendamento(evento) {
   atualizarPassos();
 }
 
+// ---------- Preenchimento automático (quem já está logado) ----------
+async function prepararPreenchimento() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+  const user = session.user;
+  const [aluno, perfil] = await Promise.all([
+    sb.from('students').select('name,phone').eq('user_id', user.id).maybeSingle(),
+    sb.from('profiles').select('name').eq('id', user.id).maybeSingle(),
+  ]);
+  estado.dadosConta = {
+    nome: (aluno.data && aluno.data.name) || (perfil.data && perfil.data.name) || (user.user_metadata && user.user_metadata.name) || '',
+    email: user.email,
+    telefone: (aluno.data && aluno.data.phone) || '',
+  };
+  campo('preencher-dados').hidden = false;
+}
+
+function preencherComDadosDaConta() {
+  const dados = estado.dadosConta;
+  if (!dados) return;
+  campo('nome').value = dados.nome;
+  campo('email').value = dados.email;
+  if (dados.telefone) campo('telefone').value = dados.telefone;
+  (dados.telefone ? campo('observacoes') : campo('telefone')).focus();
+}
+
 function iniciarAgendamento() {
   campo('data').min = hoje();
   campo('modalidades-opcoes').addEventListener('change', carregarHorarios);
@@ -147,6 +173,8 @@ function iniciarAgendamento() {
     atualizarPassos();
   });
   campo('formulario').addEventListener('submit', confirmarAgendamento);
+  campo('preencher-dados').addEventListener('click', preencherComDadosDaConta);
+  prepararPreenchimento();
   atualizarPassos();
   carregarModalidades();
 }

@@ -1,0 +1,21 @@
+/* Timer de treino: descanso (contagem regressiva) e cronômetro */
+.timer__abas { display: inline-flex; gap: var(--esp-1); margin-bottom: var(--esp-5); padding: var(--esp-1); border: 1px solid var(--cor-borda); border-radius: var(--raio-pilula); }
+.timer__aba { min-height: 44px; padding: .4rem 1.4rem; border: 0; border-radius: var(--raio-pilula); background: none; color: var(--cor-texto-suave); font: 600 var(--texto-base) var(--fonte-texto); cursor: pointer; transition: background var(--rapido), color var(--rapido); }
+.timer__aba[aria-selected="true"] { background: var(--cor-vermelho); color: #fff; }
+.timer__painel { display: grid; justify-items: center; gap: var(--esp-5); }
+.timer__visor { margin: 0; font: 400 clamp(5rem, 22vw, 9rem)/1 var(--fonte-titulo); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.timer__visor--fim { color: var(--cor-vermelho-vivo); animation: timer-pulsar .6s ease-in-out 3; }
+@keyframes timer-pulsar { 50% { opacity: .35; } }
+.timer__barra { width: min(520px, 100%); height: 8px; overflow: hidden; border-radius: var(--raio-pilula); background: var(--cor-borda); }
+.timer__barra span { display: block; width: 100%; height: 100%; transform-origin: left; background: var(--cor-vermelho-vivo); transition: transform .12s linear; }
+.timer__atalhos { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-2); }
+.timer__atalho { min-height: 44px; padding: .4rem 1.1rem; border: 1px solid var(--cor-borda); border-radius: var(--raio-pequeno); background: var(--cor-fundo); color: var(--cor-texto); font: 600 var(--texto-base) var(--fonte-texto); cursor: pointer; transition: border-color var(--rapido), background var(--rapido); }
+.timer__atalho:hover { border-color: var(--cor-vermelho); }
+.timer__atalho[aria-pressed="true"] { border-color: var(--cor-vermelho); background: rgba(229, 32, 43, .16); }
+.timer__personalizado { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: var(--esp-3); }
+.timer__personalizado .campo { margin: 0; width: 110px; }
+.timer__acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-3); }
+.timer__mensagem { min-height: 1.5em; margin: 0; color: var(--cor-vermelho-vivo); font-weight: 600; }
+.voltas { width: min(520px, 100%); margin: 0; padding: 0; list-style: none; counter-reset: volta; }
+.voltas li { display: flex; justify-content: space-between; padding: var(--esp-3) 0; border-top: 1px solid var(--cor-borda); font-variant-numeric: tabular-nums; }
+.voltas li::before { counter-increment: volta; content: 'Volta ' counter(volta); color: var(--cor-texto-suave); }

@@ -1,7 +1,7 @@
 /* Base compartilhada por todas as páginas: tokens, componentes essenciais, reset e tipografia */
-@import url('tokens.css?v=hotbar2');
-@import url('componentes/botoes.css?v=hotbar2');
-@import url('componentes/modal.css?v=hotbar2');
+@import url('tokens.css');
+@import url('componentes/botoes.css');
+@import url('componentes/modal.css');
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -19,8 +19,9 @@ body {
 }
 body.sem-rolagem { overflow: hidden; }
 
-h1, h2, h3, h4 { margin: 0; font-family: var(--fonte-titulo); font-weight: 400; line-height: 1; letter-spacing: .02em; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.1; letter-spacing: .02em; }
 img { max-width: 100%; }
+[hidden] { display: none !important; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--cor-vermelho-vivo); outline-offset: 3px; }
 

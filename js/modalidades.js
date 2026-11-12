@@ -39,12 +39,6 @@ const CATALOGO = [
   },
 ];
 
-// Chamada pelo onerror da imagem: sem arquivo de foto, mostra um bloco vermelho e preto com o nome
-function semImagem(img) {
-  img.parentElement.classList.add('foto--vazia');
-  img.remove();
-}
-
 const fotoHtml = (m, lazy = true) => `
   <figure class="foto" data-rotulo="${MODALIDADES[m.id]}">
     <img src="assets/${m.arquivo}" style="object-position: ${m.posicao}" alt="${m.alt}" ${lazy ? 'loading="lazy"' : ''} onerror="semImagem(this)">

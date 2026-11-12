@@ -28,6 +28,8 @@ const SPRITE_ICONES = `
     ${simbolo('i-chart', '<path d="M18 20V10M12 20V4M6 20v-6"/>')}
     ${simbolo('i-logout', '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>')}
     ${simbolo('i-voltar', '<path d="M19 12H5M12 19l-7-7 7-7"/>')}
+    ${simbolo('i-play', '<polygon points="6 4 20 12 6 20 6 4"/>')}
+    ${simbolo('i-video', '<rect x="2" y="5" width="14" height="14" rx="2"/><path d="m16 10 6-3v10l-6-3z"/>')}
     ${simbolo('i-menu', '<path d="M3 6h18M3 12h18M3 18h18"/>')}
     ${simbolo('i-instagram', '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><path d="M17.5 6.5h.01"/>')}
     ${simbolo('i-facebook', '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>')}
